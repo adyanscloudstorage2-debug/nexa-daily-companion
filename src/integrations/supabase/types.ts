@@ -14,7 +14,120 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      chat_history: {
+        Row: {
+          content: string
+          id: string
+          role: string
+          timestamp: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          id?: string
+          role: string
+          timestamp?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          id?: string
+          role?: string
+          timestamp?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      mood_logs: {
+        Row: {
+          ai_response: string | null
+          created_at: string
+          description: string | null
+          emoji: string
+          id: string
+          mood: string
+          user_id: string
+        }
+        Insert: {
+          ai_response?: string | null
+          created_at?: string
+          description?: string | null
+          emoji: string
+          id?: string
+          mood: string
+          user_id: string
+        }
+        Update: {
+          ai_response?: string | null
+          created_at?: string
+          description?: string | null
+          emoji?: string
+          id?: string
+          mood?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      reminders: {
+        Row: {
+          completed: boolean
+          created_at: string
+          description: string | null
+          id: string
+          scheduled_for: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          completed?: boolean
+          created_at?: string
+          description?: string | null
+          id?: string
+          scheduled_for: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          completed?: boolean
+          created_at?: string
+          description?: string | null
+          id?: string
+          scheduled_for?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
