@@ -1,73 +1,170 @@
-# Welcome to your Lovable project
+# Nexa - Your AI Daily Companion
 
-## Project info
+A mobile-first AI chatbot application that serves as a personal daily companion, blending learning, productivity, and wellness into one clean, minimal platform.
 
-**URL**: https://lovable.dev/projects/4ca2caf1-1756-4bcd-83a5-28e249f0c805
+## Features
 
-## How can I edit this code?
+### 🤖 Chat Assistance
+- Natural, human-like conversation interface
+- General Q&A for homework, productivity tips, and advice
+- Full chat history storage for easy reference
 
-There are several ways of editing your application.
+### 📚 Learning & Growth
+- Homework help (math, science, writing support)
+- Language practice (translation, grammar correction, vocabulary training)
+- Fun facts & learning quizzes
 
-**Use Lovable**
+### ✅ Productivity
+- Task reminders with scheduling
+- Quick notes and saves
+- Mini to-do system
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4ca2caf1-1756-4bcd-83a5-28e249f0c805) and start prompting.
+### 💚 Wellness & Support
+- Daily motivational quotes
+- Mood check-ins with AI support
+- Gentle wellness nudges
 
-Changes made via Lovable will be committed automatically to this repo.
+## Tech Stack
 
-**Use your preferred IDE**
+- **Frontend**: React + TypeScript + Vite
+- **Styling**: Tailwind CSS with custom design system
+- **Backend**: Supabase (Authentication, Database, Edge Functions)
+- **AI**: Google Generative AI (Gemini)
+- **Mobile**: Capacitor for native iOS/Android apps
+- **UI Components**: Radix UI + shadcn/ui
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or bun
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+1. Clone the repository
+```bash
 git clone <YOUR_GIT_URL>
+cd nexa-daily-companion
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Install dependencies
+```bash
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Database Setup
 
-**Use GitHub Codespaces**
+The project uses Supabase for backend services. All necessary migrations are in the `supabase/migrations/` folder:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- User profiles with authentication trigger
+- Chat history storage
+- Mood tracking logs
+- Reminders/tasks system
 
-## What technologies are used for this project?
+Row-Level Security (RLS) policies are configured to ensure users can only access their own data.
 
-This project is built with:
+## Mobile Development
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Running on Mobile Devices
 
-## How can I deploy this project?
+1. Export your project to GitHub
+2. Clone it locally
+3. Install dependencies: `npm install`
+4. Add platforms:
+   ```bash
+   npx cap add ios
+   npx cap add android
+   ```
+5. Build the project: `npm run build`
+6. Sync with native platforms: `npx cap sync`
+7. Run on device/emulator:
+   ```bash
+   npx cap run android
+   # or
+   npx cap run ios
+   ```
 
-Simply open [Lovable](https://lovable.dev/projects/4ca2caf1-1756-4bcd-83a5-28e249f0c805) and click on Share -> Publish.
+**Note**: iOS development requires macOS with Xcode. Android requires Android Studio.
 
-## Can I connect a custom domain to my Lovable project?
+## Environment Variables
 
-Yes, you can!
+The following environment variables are configured:
+- `VITE_SUPABASE_URL` - Your Supabase project URL
+- `VITE_SUPABASE_PUBLISHABLE_KEY` - Your Supabase anon key
+- `VITE_GOOGLE_AI_API_KEY` - Your Google Generative AI API key
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Design System
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Nexa uses a comprehensive design system defined in `src/index.css`:
+- **Primary**: Indigo (#6366F1) - Main brand color
+- **Secondary**: Emerald (#10B981) - Success and positive actions
+- **Accent**: Soft Pink - Mood tracking
+- Supports both light and dark themes
+- All colors use HSL format for consistency
+
+## Project Structure
+
+```
+src/
+├── components/        # Reusable UI components
+│   ├── ui/           # shadcn/ui components
+│   ├── ChatInterface.tsx
+│   ├── ChatMessage.tsx
+│   ├── MoodTracker.tsx
+│   ├── RemindersList.tsx
+│   ├── QuickActions.tsx
+│   └── Navigation.tsx
+├── contexts/         # React contexts
+│   ├── AuthContext.tsx
+│   └── ThemeContext.tsx
+├── hooks/            # Custom React hooks
+│   ├── useChat.ts
+│   ├── useMood.ts
+│   └── useReminders.ts
+├── pages/            # Page components
+│   ├── Index.tsx
+│   ├── Auth.tsx
+│   ├── Profile.tsx
+│   └── NotFound.tsx
+├── services/         # External service integrations
+│   └── ai.ts
+└── integrations/     # Supabase integration
+    └── supabase/
+```
+
+## Authentication
+
+The app uses Supabase Auth with support for:
+- Email/Password authentication
+- Google OAuth
+- Automatic profile creation on signup
+- Session persistence
+
+To test locally, you may want to disable "Confirm email" in Supabase settings for faster development.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is part of the Lovable platform.
+
+## Support
+
+For issues or questions, please open an issue on GitHub or contact the development team.
+
+---
+
+**Project URL**: https://lovable.dev/projects/4ca2caf1-1756-4bcd-83a5-28e249f0c805
